@@ -1,0 +1,47 @@
+services:
+  # Employee Service Database
+  employee-db:
+    image: postgres:latest
+    container_name: employee-db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: employeesDb
+    ports:
+      - "5433:5432"  # Exposing different ports for each service (Maps host port 5433 to container's 5432)
+    volumes:
+      - employee_data:/var/lib/postgresql/data
+
+  # Project Service Database
+  project-db:
+    image: postgres:latest
+    container_name: project-db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: projectsDb
+    ports:
+      - "5434:5432"
+    volumes:
+      - project_data:/var/lib/postgresql/data
+
+  # Location Service Database
+  location-db:
+    image: postgres:latest
+    container_name: location-db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: locationsDb
+    ports:
+      - "5435:5432"
+    volumes:
+      - location_data:/var/lib/postgresql/data
+
+volumes:
+  employee_data:
+  project_data:
+  location_data:
