@@ -18,7 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'postgrespw',
       database: 'projectsDb',
       entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      synchronize: true,
     }),
   ],
   controllers: [],

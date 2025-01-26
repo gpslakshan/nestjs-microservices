@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { EmployeeModule } from './employee/employee.module';
 
 @Module({
   imports: [
@@ -18,8 +19,9 @@ import { join } from 'path';
       password: 'postgrespw',
       database: 'employeesDb',
       entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      synchronize: true,
     }),
+    EmployeeModule,
   ],
   controllers: [],
   providers: [],
